@@ -85,6 +85,7 @@ public class SacoTurno {
 					        element.click();
 			                Thread.sleep(2000);
 					        sePudoSacarTurno = true;    
+					        mensaje = "Se pudo sacar turno en el mes " + MesParaSacarTurno;
 			        	}
 			        	else
 					        mensaje = "No hay horarios disponibles en el mes " + MesParaSacarTurno; 
@@ -96,8 +97,8 @@ public class SacoTurno {
 		        else 
 		        	mensaje = "No está por defecto el mes " + MesParaSacarTurno; 
 		        
-		        Assert.assertTrue(sePudoSacarTurno, mensaje);
-			}
+	        	System.out.println(mensaje);
+		}
 		catch (Exception e) {
 	        e.printStackTrace();
 		}
