@@ -17,7 +17,7 @@ public class SacoTurno {
     public static void main(String[] args) throws IOException {
     	System.setProperty("webdriver.chrome.driver", new File("./Drivers/chromedriver").getCanonicalPath());
 		WebDriver driver = new ChromeDriver();
-		String MesParaSacarTurno = "Febrero";
+		String MesParaSacarTurno = "Junio";
 		boolean sePudoSacarTurno = false;
 		String mensaje = "Se pudo sacar turno en el mes " + MesParaSacarTurno;
 		try {
