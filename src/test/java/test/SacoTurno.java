@@ -17,7 +17,7 @@ public class SacoTurno {
     public static void main(String[] args) throws IOException {
     	System.setProperty("webdriver.chrome.driver", new File("./Drivers/chromedriver").getCanonicalPath());
     	ChromeOptions options = new ChromeOptions();
-//    	options.addArguments("--headless");
+    	options.addArguments("--headless");
     	WebDriver driver = new ChromeDriver(options);    	
 		String MesParaSacarTurno = "Febrero";
 		String MesParaSacarTurno2 = "Mayo";
