@@ -17,9 +17,10 @@ public class SacoTurno {
     public static void main(String[] args) throws IOException {
     	System.setProperty("webdriver.chrome.driver", new File("./Drivers/chromedriver").getCanonicalPath());
     	ChromeOptions options = new ChromeOptions();
-    	options.addArguments("--headless");
+//    	options.addArguments("--headless");
     	WebDriver driver = new ChromeDriver(options);    	
 		String MesParaSacarTurno = "Febrero";
+		String MesParaSacarTurno2 = "Mayo";
 		boolean sePudoSacarTurno = false;
 		String mensaje = "Se pudo sacar turno en el mes " + MesParaSacarTurno;
 		try {
@@ -69,7 +70,7 @@ public class SacoTurno {
 		        	element.click();
 		        
 		        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector((".btn.red.float-left"))));
-		        if (driver.findElement(By.cssSelector(".txt-caps.txt-blue")).getText().contains(MesParaSacarTurno)) {
+		        if (driver.findElement(By.cssSelector(".txt-caps.txt-blue")).getText().contains(MesParaSacarTurno) || (driver.findElement(By.cssSelector(".txt-caps.txt-blue")).getText().contains(MesParaSacarTurno2))) {
 		        	
 		        	List<WebElement>turnosDisponibles = driver.findElements(By.cssSelector("[class*='available-appointments ']"));
 		        	if (turnosDisponibles.size() != 0) {
