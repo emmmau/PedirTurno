@@ -19,7 +19,7 @@ public class SacoTurno {
     	ChromeOptions options = new ChromeOptions();
     	options.addArguments("--headless");
     	WebDriver driver = new ChromeDriver(options);    	
-		String MesParaSacarTurno = "Junio";
+		String MesParaSacarTurno = "Febrero";
 		boolean sePudoSacarTurno = false;
 		String mensaje = "Se pudo sacar turno en el mes " + MesParaSacarTurno;
 		try {
