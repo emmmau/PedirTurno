@@ -17,7 +17,7 @@ public class SacoTurno {
     public static void main(String[] args) throws IOException {
     	System.setProperty("webdriver.chrome.driver", new File("./Drivers/chromedriver").getCanonicalPath());
     	ChromeOptions options = new ChromeOptions();
-//    	options.addArguments("--headless");
+    	options.addArguments("--headless");
     	WebDriver driver = new ChromeDriver(options);    	
 		String MesParaSacarTurno = "Febrero";
 		String MesParaSacarTurno2 = "Mayo";
@@ -27,7 +27,6 @@ public class SacoTurno {
 				WebDriverWait wait = new WebDriverWait(driver, 10);
 		        driver.get("https://www.hospitalaleman.com/portalpacientes/login");
 				driver.manage().window().maximize() ;
-				wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[type='submit']")));
 		        driver.findElement(By.id("email")).sendKeys("22587947");
 		        driver.findElement(By.id("password")).sendKeys("Inicio01!");
 		        driver.findElement(By.cssSelector("[type='submit']")).click();        
