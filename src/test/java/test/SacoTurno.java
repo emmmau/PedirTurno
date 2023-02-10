@@ -15,7 +15,7 @@ public class SacoTurno {
 
 
     public static void main(String[] args) throws IOException {
-    	System.setProperty("webdriver.chrome.driver", new File("./Drivers/chromedriver").getCanonicalPath());
+    	System.setProperty("webdriver.chrome.driver", new File("./Drivers/chromedriver.exe").getCanonicalPath());
     	ChromeOptions options = new ChromeOptions();
     	options.addArguments("--headless");
     	WebDriver driver = new ChromeDriver(options);    	
