@@ -19,8 +19,9 @@ public class SacoTurno {
     	ChromeOptions options = new ChromeOptions();
     	options.addArguments("--headless");
     	WebDriver driver = new ChromeDriver(options);    	
-		String MesParaSacarTurno = "Febrero";
-		String MesParaSacarTurno2 = "Mayo";
+		String MesParaSacarTurno = "Enero";
+		String MesParaSacarTurno2 = "Febrero";
+		String MesParaSacarTurno3 = "Marzo";		
 		boolean sePudoSacarTurno = false;
 		String mensaje = "Se pudo sacar turno en el mes " + MesParaSacarTurno;
 		try {
@@ -62,14 +63,20 @@ public class SacoTurno {
 		
 		        driver.findElement(By.cssSelector(".blue.float-left")).click();
 		
+		        Thread.sleep(5000);
 		        element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".next")));
 		        element = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".next")));
+		        List <WebElement> elements = driver.findElements(By.cssSelector(".next"));
 		        Thread.sleep(3000);
-		        if (element != null)
-		        	element.click();
+		        if ((element != null) && (elements.size()==2)) {
+		        	elements.get(1).click();
+		         	elements.get(0).click();				       
+		        }
+		        else 
+		        	elements.get(0).click();
 		        
 		        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector((".btn.red.float-left"))));
-		        if (driver.findElement(By.cssSelector(".txt-caps.txt-blue")).getText().contains(MesParaSacarTurno) || (driver.findElement(By.cssSelector(".txt-caps.txt-blue")).getText().contains(MesParaSacarTurno2))) {
+		        if (driver.findElement(By.cssSelector(".txt-caps.txt-blue")).getText().contains(MesParaSacarTurno) || (driver.findElement(By.cssSelector(".txt-caps.txt-blue")).getText().contains(MesParaSacarTurno2) || (driver.findElement(By.cssSelector(".txt-caps.txt-blue")).getText().contains(MesParaSacarTurno3)))) {
 		        	
 		        	List<WebElement>turnosDisponibles = driver.findElements(By.cssSelector("[class*='available-appointments ']"));
 		        	if (turnosDisponibles.size() != 0) {
