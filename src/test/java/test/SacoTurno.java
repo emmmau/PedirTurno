@@ -10,18 +10,20 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class SacoTurno {
 
 
     public static void main(String[] args) throws IOException {
-    	System.setProperty("webdriver.chrome.driver", new File("./Drivers/chromedriver").getCanonicalPath());
+        WebDriverManager.chromedriver().setup();    	    	
+//    	System.setProperty("webdriver.chrome.driver", new File("./Drivers/chromedriver").getCanonicalPath());
     	ChromeOptions options = new ChromeOptions();
     	options.addArguments("--headless");
     	WebDriver driver = new ChromeDriver(options);    	
-		String MesParaSacarTurno = "Septiembre";
-		String MesParaSacarTurno2 = "Octubre";
-		String MesParaSacarTurno3 = "Noviembre";		
+		String MesParaSacarTurno = "Octubre";
+		String MesParaSacarTurno2 = "Noviembre";
+		String MesParaSacarTurno3 = "Diciembre";		
 		boolean sePudoSacarTurno = false;
 		String mensaje = "Se pudo sacar turno en el mes " + MesParaSacarTurno;
 		try {
@@ -32,12 +34,10 @@ public class SacoTurno {
 		        driver.findElement(By.id("password")).sendKeys("Inicio01!");
 		        driver.findElement(By.cssSelector("[type='submit']")).click();        
 		
-		        WebElement element = wait.until(
-		                ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".button-ha.txt-white")));
-		        if (element != null)
-		        	element.click();
+		        if (driver.findElements(By.cssSelector(".button-ha.txt-white")).size() != 0)
+		        	driver.findElement(By.cssSelector(".button-ha.txt-white")).click();
 
-		        element = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".btn-primary")));
+		        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".btn-primary")));
 		        driver.findElement(By.cssSelector(".btn-primary")).click();
 		        
 		        element = wait.until(
